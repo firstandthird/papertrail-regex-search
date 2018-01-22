@@ -1,0 +1,35 @@
+{
+  "name": "papertrail-regex-search",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Adds a search box to filter your Papertrail logs by regular expression",
+  "main": "extension/inject/inject.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:firstandthird/papertrail-regex-search.git"
+  },
+  "keywords": [
+    "papertrail",
+    "regex",
+    "logs"
+  ],
+  "author": "First+Third <code@firstandthird.com> (http://firstandthird.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/papertrail-regex-search/issues"
+  },
+  "homepage": "https://github.com/firstandthird/papertrail-regex-search",
+  "devDependencies": {
+    "eslint-config-firstandthird": "4.3.0",
+    "eslint-plugin-import": "2.8.0"
+  },
+  "eslintConfig": {
+    "extends": "firstandthird",
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "chrome": true
+    }
+  }
+}

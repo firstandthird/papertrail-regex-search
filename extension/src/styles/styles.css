@@ -1,0 +1,11 @@
+.pr-wrapper {
+  flex-wrap: wrap;
+}
+
+.pr-error {
+  color: #ff4500;
+  display: none;
+  font-size: 12px;
+  margin: 5px 0;
+  width: 100%;
+}
