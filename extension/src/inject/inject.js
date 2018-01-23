@@ -19,7 +19,8 @@ class RegexForm {
       <div class="pr-wrapper grid flex mod-with-velocity">
         <div class="grid-cell cell-query">
           <div class="query-wrapper">
-            <input id="pr-input" autocapitalize="off" autocomplete="off" autocorrect="off" class="text" name="regex" placeholder="Example: /[A-Z]/" spellcheck="false" type="text" value="">
+            <a href="#" id="pr-reset" class="zoom-icon" data-tooltip-hide-trigger="click" data-tooltip-position="top-left" data-tooltip="Clear search"><span class="flaticon solid x-2"></span></a>
+            <input id="pr-input" autocapitalize="off" autocomplete="off" autocorrect="off" class="text" name="regex" placeholder='Example: blocked-uri:"(.*?)"' spellcheck="false" type="text" value="">
           </div>
         </div>
         <div class="grid-cell cell-tail-options">
@@ -36,7 +37,15 @@ class RegexForm {
     document.querySelector('#tail-search-form').insertAdjacentElement('afterend', this.form);
 
     this.input = this.form.querySelector('#pr-input');
+    this.resetBtn = this.form.querySelector('#pr-reset');
     this.error = this.form.querySelector('.pr-error');
+
+    this.resetBtn.addEventListener('click', (e) => {
+      console.log('reset');
+      e.preventDefault();
+      this.form.reset();
+      this.resetForm();
+    });
 
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -64,23 +73,59 @@ class RegexForm {
    *
    * @param {string} text
    */
-  search(text = this.input.value || '') {
-    this.resultsList.querySelectorAll('.message').forEach((e) => {
-      try {
-        const regex = new RegExp(text.replace(/\//, ''));
-        const closest = e.closest('.event');
+  search(text = this.input.value) {
+    if (!text || text === '') {
+      this.resetForm();
+      return;
+    }
+
+    try {
+      const regex = new RegExp(text.replace(/\//, ''));
+
+      this.resultsList.querySelectorAll('.message').forEach(element => {
+        const match = element.textContent.match(regex);
 
         this.hideError();
 
-        if (!e.textContent.match(regex)) {
-          closest.style.display = 'none';
+        let matchContainer = null;
+
+        if (element.nextElementSibling && element.nextElementSibling.classList.contains('pr-match')) {
+          matchContainer = element.nextElementSibling;
+        }
+
+        if (match) {
+          if (!matchContainer) {
+            matchContainer = document.createElement('span');
+            matchContainer.classList.add('pr-match');
+            element.insertAdjacentElement('afterEnd', matchContainer);
+          }
+
+          matchContainer.style.display = 'inline';
+          matchContainer.textContent = match[1];
+          element.style.display = 'none';
         }
         else {
-          closest.style.display = 'block';
+          element.style.display = 'inline';
+
+          if (matchContainer) {
+            matchContainer.style.display = 'none';
+          }
         }
-      } catch (e) {
-        this.showError();
-        throw e;
+      });
+    }
+    catch(err) {
+      this.showError();
+      throw err;
+    }
+  }
+
+  resetForm() {
+    this.resultsList.querySelectorAll('.message').forEach(element => {
+      element.style.display = 'inline';
+      const sibling = element.nextElementSibling;
+
+      if (sibling.classList.contains('.pr-match')) {
+        sibling.style.display = 'none';
       }
     });
   }

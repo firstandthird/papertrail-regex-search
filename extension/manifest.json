@@ -19,7 +19,7 @@
     {
       "run_at": "document_end",
       "matches": [
-        "https://papertrailapp.com/groups/*/events?q=*"
+        "https://papertrailapp.com/*events*"
       ],
       "css": [
         "src/styles/styles.css"
