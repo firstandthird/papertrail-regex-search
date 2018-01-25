@@ -41,7 +41,6 @@ class RegexForm {
     this.error = this.form.querySelector('.pr-error');
 
     this.resetBtn.addEventListener('click', (e) => {
-      console.log('reset');
       e.preventDefault();
       this.form.reset();
       this.resetForm();
@@ -122,9 +121,10 @@ class RegexForm {
   resetForm() {
     this.resultsList.querySelectorAll('.message').forEach(element => {
       element.style.display = 'inline';
+
       const sibling = element.nextElementSibling;
 
-      if (sibling.classList.contains('.pr-match')) {
+      if (sibling && sibling.classList.contains('.pr-match')) {
         sibling.style.display = 'none';
       }
     });

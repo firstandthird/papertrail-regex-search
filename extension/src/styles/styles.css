@@ -1,3 +1,16 @@
+#search .frame {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#search .frame form {
+  flex-grow: 2;
+}
+
+#pr-form {
+  flex-grow: 1;
+}
+
 .pr-wrapper {
   flex-wrap: wrap;
 }
