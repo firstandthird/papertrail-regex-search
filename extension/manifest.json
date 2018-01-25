@@ -13,7 +13,7 @@
   "offline_enabled": false,
   "permissions": [
     "contentSettings",
-    "https: //papertrailapp.com/"
+    "https://papertrailapp.com/"
   ],
   "content_scripts": [
     {
