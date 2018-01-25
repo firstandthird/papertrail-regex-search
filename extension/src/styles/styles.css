@@ -1,6 +1,11 @@
 #search .frame {
   display: flex;
-  flex-wrap: wrap;
+}
+
+@media (max-width: 920px) {
+  #search .frame {
+    flex-wrap: wrap;
+  }
 }
 
 #search .frame form {
