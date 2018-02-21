@@ -1,0 +1,32 @@
+{
+  "name": "Papertrail Regex Search",
+  "description": "Adds a search box to filter your Papertrail logs by regular expression",
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "homepage_url": "https://github.com/firstandthird/papertrail-regex-search",
+  "author": "First+Third <code@firstandthird.com> (http://firstandthird.com/)",
+  "offline_enabled": false,
+  "permissions": [
+    "contentSettings",
+    "https://papertrailapp.com/"
+  ],
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "https://papertrailapp.com/*events*"
+      ],
+      "css": [
+        "src/styles/styles.css"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}

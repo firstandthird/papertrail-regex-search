@@ -1,21 +1,6 @@
-# GitHub Search to CSV Chrome Extension
+MIT License
 
-Adds a search box to filter your Papertrail logs by regular expression.
-
-## Installation
-
-- Open Google Chrome and navigate to `chrome://extensions`.
-- Drop `papertrail-regex-search.crx` into window. Click `Add extension` when prompted.
-
-## Usage
-
-Perform a Papertrail search and a new search box will be available to filter logs by regular expression.
-
-## License
-
-### MIT License
-
-Copyright (c) 2017 First+Third
+Copyright (c) 2018 First+Third
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

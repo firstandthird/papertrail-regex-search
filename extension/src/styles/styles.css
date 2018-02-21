@@ -1,0 +1,29 @@
+#search .frame {
+  display: flex;
+}
+
+@media (max-width: 920px) {
+  #search .frame {
+    flex-wrap: wrap;
+  }
+}
+
+#search .frame form {
+  flex-grow: 2;
+}
+
+#pr-form {
+  flex-grow: 1;
+}
+
+.pr-wrapper {
+  flex-wrap: wrap;
+}
+
+.pr-error {
+  color: #ff4500;
+  display: none;
+  font-size: 12px;
+  margin: 5px 0;
+  width: 100%;
+}
