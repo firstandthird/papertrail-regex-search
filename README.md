@@ -1,4 +1,4 @@
-# GitHub Search to CSV Chrome Extension
+# Papertrail Regex Search Chrome Extension
 
 Adds a search box to filter your Papertrail logs by regular expression.
 
