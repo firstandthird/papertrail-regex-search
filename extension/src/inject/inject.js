@@ -16,22 +16,19 @@ class RegexForm {
    */
   generateTemplate() {
     const formTemplate = `
-      <div class="pr-wrapper grid flex mod-with-velocity">
-        <div class="grid-cell cell-query">
-          <div class="query-wrapper">
-            <a href="#" id="pr-reset" class="zoom-icon" data-tooltip-hide-trigger="click" data-tooltip-position="top-left" data-tooltip="Clear search"><span class="flaticon solid x-2"></span></a>
-            <input id="pr-input" autocapitalize="off" autocomplete="off" autocorrect="off" class="text" name="regex" placeholder='Example: blocked-uri:"(.*?)"' spellcheck="false" type="text" value="">
-          </div>
-        </div>
-        <div class="grid-cell cell-tail-options">
-          <button type="submit" id="pr-submit" class="btn btn-velocity">Filter</button>
-        </div>
-        <div class="pr-error"><small>Invalid regex</small></div>
+      <div class="search-input">
+        <a href="#" id="pr-reset" class="zoom-icon" data-tooltip-hide-trigger="click" data-tooltip-position="top-left" data-tooltip="Clear search"><span class="flaticon solid x-2"></span></a>
+        <input id="pr-input" autocapitalize="off" autocomplete="off" autocorrect="off" class="text" name="regex" placeholder='Example: blocked-uri:"(.*?)"' spellcheck="false" type="text" value="">
       </div>
+      <div class="search-submit">
+        <button type="submit" id="pr-submit" class="btn-link btn-search-control btn-velocity">Filter</button>
+      </div>
+      <div class="pr-error pr-hide"><small>Invalid regex</small></div>
     `;
 
     this.form = document.createElement('form');
     this.form.id = 'pr-form';
+    this.form.classList.add('search');
     this.form.innerHTML = formTemplate;
 
     document.querySelector('#tail-search-form').insertAdjacentElement('afterend', this.form);
@@ -56,14 +53,14 @@ class RegexForm {
    * Displays an error message on regex failure
    */
   showError() {
-    this.error.style.display = 'block';
+    this.error.classList.remove('pr-hide');
   }
 
   /**
    * Hides error message
    */
   hideError() {
-    this.error.style.display = 'none';
+    this.error.classList.add('pr-hide');
   }
 
   /**
@@ -119,6 +116,8 @@ class RegexForm {
   }
 
   resetForm() {
+    this.hideError();
+
     this.resultsList.querySelectorAll('.message').forEach(element => {
       element.style.display = 'inline';
 
