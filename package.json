@@ -1,6 +1,6 @@
 {
   "name": "papertrail-regex-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Adds a search box to filter your Papertrail logs by regular expression",
   "main": "extension/inject/inject.js",

@@ -15,7 +15,7 @@ Perform a Papertrail search and a new search box will be available to filter log
 
 ### MIT License
 
-Copyright (c) 2017 First+Third
+Copyright (c) 2018 First+Third
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
